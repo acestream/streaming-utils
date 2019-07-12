@@ -330,7 +330,7 @@ def start_single_stream(name, sid, port, config, stream_data, cli_args, force_cr
         return False
 
     # common params
-    token = config.get("node_access_token")
+    token = config.get("node_access_token", required=False)
     if token:
         args.extend(['--service-access-token', str(token)])
 

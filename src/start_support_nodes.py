@@ -97,7 +97,7 @@ def start_single_stream(port, config, stream_data, cli_args):
 
     stream_data['extended_logging'] = int(stream_data['extended_logging'])
 
-    token = config.get("node_access_token")
+    token = config.get("node_access_token", required=False)
     log_path = os.path.join(config.get_dir("log"), "support_node_%d.log" % (port,))
     cache_path = os.path.join(config.get_dir("cache"), "support_node_%d_cache" % (port,))
     state_path = os.path.join(config.get_dir("state"), "support_node_%d_state" % (port,))
