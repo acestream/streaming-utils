@@ -20,11 +20,25 @@ Features currently available:
 Usage
 =====
 
-Start all source nodes:
-``python src/start_source_nodes.py``
+.. code-block:: bash
 
-Start all support nodes:
-``python src/start_support_nodes.py``
+    # Start all source nodes
+    $ python src/start_source_nodes.py
+
+    # Start all support nodes:
+    $ python src/start_support_nodes.py
+
+    # Start single source node by port:
+    $ python src/start_source_nodes.py --port <port>
+
+    # Start single support node by port:
+    $ python src/start_support_nodes.py --port <port>
+
+    # Stop all running nodes:
+    $ python src/stop_nodes all
+
+    # Stop single node by its port:
+    $ python src/stop_nodes <port>
 
 When all source/support nodes are started app always tries to match running nodes with config.
 This means that:
@@ -32,21 +46,14 @@ This means that:
 * all nodes from config are started if they were not already started
 * when there are running nodes which are not present in config they are stopped
 
-Start single source node by port:
-``python src/start_source_nodes.py --port <port>``
-
-Start single support node by port:
-``python src/start_support_nodes.py --port <port>``
-
-Stop all running nodes:
-``python src/stop_nodes all``
-
-Stop single node by its port:
-``python src/stop_nodes <port>``
 
 Send monitoring data and metadata to configured endpoints (usually you run this periodically from cron job):
-``python src/monitor_nodes.py --node-type <source|support>``
-``python src/update_metadata.py``
+
+.. code-block:: bash
+
+    $ python src/monitor_nodes.py --node-type <source|support>
+    $ python src/update_metadata.py
+
 
 App Config
 ==========
@@ -64,7 +71,7 @@ Options:
   * ``alpha``: path to alpha version
 
 * ``root``: root folder (all other dirs are described relatively to root)
-* ``controller``: list of endpoints used by tool to communicate with other apps.
+* ``controller``: list of endpoints used by app to communicate with other apps.
   Some endpoints can be both local or remote.
   Local endpoint is set as path to local file (either absolute or relatively to ``root``)
   Remote endpoint is set as an URL (it must start with http: or https:)
@@ -74,30 +81,34 @@ Options:
   * ``monitor``: URL which will receive monitoring data (remote only)
   * ``metadata_receiver``: URL which will receive nodes' metadata (remote only)
 
-* ``dirs``: path to dirs which are used by this tool
+* ``dirs``: path to dirs which are used by this app
 * ``trackers``: list of trackers_ (you must add at least one tracker)
 * ``provider_key``: optional `provider key`_
 * ``node_access_token``: optional `node access token`_
 
 
 Trackers
---------
+========
+
 Preferred tracker is XBT (https://github.com/OlafvdSpek/xbt)
+
 You should add tracker's announce URL to the config (e.g. ``udp://tracker1.example.com:2710/announce``)
 
 
 Provider key
-------------
+============
+
 It's a string which identifies you as a broadcaster. It's written to transport file and used by clients when they send statistics to P2P network.
 
 
 Node access token
------------------
+=================
+
 It's a string which prevents unauthorized access to node's API interface (see http://wiki.acestream.org/wiki/index.php/AceStream_3.0/en#Node.27s_web-interface)
 
 
 Source node config
-------------------
+==================
 
 See ``examples/source_node_config.json``
 
@@ -112,7 +123,7 @@ See ``examples/source_node_config.json``
 
 
 Support node config
--------------------
+===================
 
 See ``examples/support_node_config.json``
 
@@ -121,7 +132,7 @@ See ``examples/support_node_config.json``
 
 
 Common config params
---------------------
+====================
 
 (for both source and support node)
 
@@ -130,11 +141,13 @@ Common config params
 * ``extended_logging``: 0|1 (used to enable extended logging on the node)
 
 Recommended infrastructure
---------------------------
+==========================
 
 1 private source node + 2 support nodes.
+
 All three nodes should be places on different servers.
-Up to 50 total nodes on one server 32 Gb RAM + some modern quad code CPU (actual number depends on the total bitrate and available bandwidth).
+
+Up to 50 total nodes on one server 32 Gb RAM + some modern quad core CPU (actual number depends on the total bitrate and available bandwidth).
 
 
 Monitoring
