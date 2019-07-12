@@ -1,0 +1,16 @@
+[
+    {
+        "stream_uid": "brodilo",
+        "port": 8640,
+        "title": "Brodilo Channel",
+        "url": "http://127.0.0.1/brodilo_hls/stream.m3u8",
+        "bitrate": "400000",
+        "categories": ["entertaining"],
+        "quality": "HD",
+        "type": "hls",
+        "upload_to": ["127.0.0.1:8641"],
+        "force_monotonic_sequence": 1,
+        "extended_logging": 1,
+        "engine_version": "stable"
+    }
+]

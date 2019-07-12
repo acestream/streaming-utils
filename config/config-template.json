@@ -1,0 +1,31 @@
+{
+    "engine_path": {
+        "stable": "/opt/acestream-stable/start-engine",
+        "beta": "/opt/acestream-beta/start-engine",
+        "alpha": "/opt/acestream-alpha/start-engine"
+    }
+    ,"root": "/opt/app"
+    ,"controller": {
+        "source_node": "http://example.com/source_node/get_config.php",
+        "support_node": "http://example.com/support_node/get_config.php",
+        "monitor": "http://example.com/monitor/data_receiver.php",
+        "metadata_receiver": "http://example.com/source_node/post_data.php"
+    }
+    ,"dirs": {
+        "public": "tmp/public",
+        "private": "tmp/private",
+        "metadata": "tmp/metadata",
+        "log": "tmp/logs",
+        "cache": "tmp/cache",
+        "pid": "tmp/run",
+        "state": "tmp/state"
+    }
+    ,"trackers": [
+        // add at least one tracker
+        "udp://tracker1.example.com:2710/announce",
+        "udp://tracker2.example.com:2710/announce",
+        // ...
+    ]
+    //,"provider_key": "<provider_key>"
+    //,"node_access_token": "<access_token>"
+}

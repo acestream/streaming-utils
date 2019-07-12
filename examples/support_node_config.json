@@ -1,0 +1,9 @@
+[
+    {
+        "port": 8641,
+        "source_ip": "127.0.0.1",
+        "source_port": 8640,
+        "extended_logging": 1,
+        "engine_version": "stable"
+    }
+]
