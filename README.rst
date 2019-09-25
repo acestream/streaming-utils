@@ -23,13 +23,13 @@ Usage
 .. code-block:: bash
 
     # Start all source nodes
-    $ python src/start_source_nodes.py
+    $ python src/start_streamers.py
 
     # Start all support nodes:
     $ python src/start_support_nodes.py
 
     # Start single source node by port:
-    $ python src/start_source_nodes.py --port <port>
+    $ python src/start_streamers.py --port <port>
 
     # Start single support node by port:
     $ python src/start_support_nodes.py --port <port>
