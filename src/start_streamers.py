@@ -269,10 +269,17 @@ def start_single_stream(name, sid, port, config, stream_data, cli_args, force_cr
             '--cache-dir', str(cache_path),
             '--state-dir', str(state_path),
             '--pid-file-dir', str(config.get_dir("pid")),
-            '--provider-key', str(config.get_provider_key()),
-            '--sid', str(sid),
             '--live-mem-cache-size', str(cache_size),
         ]
+
+        # optional provider key
+        provider_key = config.get_provider_key()
+        if provider_key:
+            args.extend(['--provider-key', str(provider_key)])
+
+        # optional sid (used only with provider key)
+        if provider_key and sid:
+            args.extend(['--sid', str(sid)])
 
         # add trackers
         for t in config.get_trackers():
