@@ -35,7 +35,6 @@ USE_PERCENT_FROM_TOTAL_MEMORY = 0.6
 
 COMMON_ARGS = [
     '--stream-source-node',
-    '--private-node', '1',
     '--monitor-node-ip', '127.0.0.1',
     '--skip-internal-tracker',
     '--source-reconnect-interval', '20',
@@ -51,7 +50,6 @@ COMMON_ARGS = [
 
 COMMON_ARGS_HLS = [
     '--stream-support-node',
-    '--private-node', '1',
     '--monitor-node-ip', '127.0.0.1',
     '--hide-hls-segments',
     '--hls-broadcast-last-source-piece',
@@ -347,6 +345,9 @@ def start_single_stream(name, sid, port, config, stream_data, cli_args, force_cr
 
     if stream_data['extended_logging'] == 1:
         args.extend(COMMON_DEBUG_ARGS)
+
+    if 'private_node' in stream_data:
+        args.extend(['--private-node', str(stream_data['private_node'])])
 
     if cli_args.dry_run:
         logger.info('DRY-RUN: start engine: args=%r', args)

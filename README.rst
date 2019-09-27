@@ -118,7 +118,7 @@ See ``examples/source_node_config.json``
 * ``bitrate``: stream bitrate in bytes/s (Used only when input stream is TS)
 * ``categories``: list of categories (for allowed values see ``ALLOWED_CATEGORIES`` in ``common.py``)
 * ``quality``: SD|HD
-* ``type``: ts|hls (currently acestream supports two types of input streams: MPEG-TS over HTTP and HLS)
+* ``type``: type of input stream: ts|hls (currently acestream supports two types of input streams: MPEG-TS over HTTP and HLS)
 * ``force_monotonic_sequence``: (0|1, optional, default=0) Used only when input stream is HLS
 
 
@@ -139,6 +139,7 @@ Common config params
 * ``port``: node port
 * ``engine_version``: stable|beta|alpha (it can be used to run several streams on the newest alpha/beta engine before going to productions)
 * ``extended_logging``: 0|1 (used to enable extended logging on the node)
+* ``private_node``: 0|1 (private nodes can only be accessed from explicitly allowed ip-addresses)
 
 Recommended infrastructure
 ==========================
